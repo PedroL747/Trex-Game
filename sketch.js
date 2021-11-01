@@ -27,12 +27,12 @@ function preload(){
   obstaculo6 = loadImage("obstacle6.png");
   sompula = loadSound("jump.mp3");
   chekipoitesom = loadSound("checkPoint.mp3");
-  var teste = 0
+ 
 }
 
 function setup() {
   createCanvas(600, 200);
-  console.log(teste)
+  
   trex = createSprite(50,180,10,10);
   trex.addAnimation("running", trex_correndo);
   trex.addAnimation("collided" , trex_colidiu)
