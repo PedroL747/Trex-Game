@@ -64,7 +64,7 @@ function draw() {
   background(180);
   antibug = antibug + 0.5
   text("Pontuação: "+ pontuacao, 500,50);
-  console.log(grupodeobstaculos.y)
+  
   console.log(soloinvisivel.y)
   
 
@@ -118,7 +118,7 @@ function gerarObstaculos(){
    var obstaculo = createSprite(600,windowHeight/2,10,40);
   obstaculo.velocityX = -(6 + pontuacao / 800);
       
-   
+   console.log("obstaculo" + obstaculo.y)
     //gerar obstáculos aleatórios
     var rand = Math.round(random(1,6));
     switch(rand) {
