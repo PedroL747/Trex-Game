@@ -4,7 +4,7 @@ var estadoJogo = JOGAR;
 
 var trex, trex_correndo, trex_colidiu;
 var solo, soloinvisivel, imagemdosolo;
-
+var antibug = 0
 var nuvem, grupodenuvens, imagemdanuvem;
 var grupodeobstaculos, obstaculo1, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obstaculo6;
 var gameover, reset, gamiouver, que_ruim
@@ -27,27 +27,26 @@ function preload(){
   obstaculo6 = loadImage("obstacle6.png");
   sompula = loadSound("jump.mp3");
   chekipoitesom = loadSound("checkPoint.mp3");
- 
+  
 }
 
 function setup() {
-  createCanvas(600, 200);
-  
+  createCanvas(windowWidth,windowHeight);
   trex = createSprite(50,180,10,10);
   trex.addAnimation("running", trex_correndo);
   trex.addAnimation("collided" , trex_colidiu)
   trex.scale = 0.5;
   
-  solo = createSprite(200,180,400,20);
+  solo = createSprite(200,windowHeight/2.1,400,20);
   solo.addImage("ground",imagemdosolo);
   solo.x = solo.width /2;
   solo.velocityX = -4;
   
-  soloinvisivel = createSprite(200,190,400,10);
+  soloinvisivel = createSprite(200,windowHeight/2,400,10);
   soloinvisivel.visible = false;
-   gamiouver = createSprite(290,110,100,100)
+   gamiouver = createSprite(windowWidth/2,windowHeight/3,100,100)
   gamiouver.addImage("cabo",gameover)
-  que_ruim = createSprite(280, 150)
+  que_ruim = createSprite(windowWidth/2, windowHeight/2.3)
   que_ruim.addImage("horrivel", reset)
   gamiouver.scale = 0.6
   que_ruim.scale = 0.4
@@ -63,7 +62,8 @@ function setup() {
 
 function draw() {
   background(180);
-  
+  antibug = antibug + 0.5
+  console.log(antibug)
   text("Pontuação: "+ pontuacao, 500,50);
   
 
@@ -73,10 +73,10 @@ if(estadoJogo === JOGAR){
   if(pontuacao % 500 === 0 && pontuacao > 0){
     chekipoitesom.play()
   }
-  if(keyDown("space")&& trex.y >= 160) {
+  if((touches.lenght>0||keyDown("space"))&& trex.y >= windowHeight/2.4) {
     trex.velocityY = -15;
     sompula.play()
-      
+      touches =  []
   }
   trex.velocityY = trex.velocityY + 0.8 
   gerarObstaculos();
@@ -89,6 +89,8 @@ if(estadoJogo === JOGAR){
   
 else if(estadoJogo === ENCERRAR){
     solo.velocityX = 0;
+trex.velocityY = trex.velocityY + 0.8 
+  trex.velocityX = 0
     trex.changeAnimation("collided", trex_colidiu)
     grupodeobstaculos.setVelocityXEach(0)
     grupodenuvens.setVelocityXEach(0)
@@ -112,7 +114,7 @@ else if(estadoJogo === ENCERRAR){
 
 function gerarObstaculos(){
  if (frameCount % 60 === 0){
-   var obstaculo = createSprite(600,165,10,40);
+   var obstaculo = createSprite(600,windowHeight/2.28,10,40);
   obstaculo.velocityX = -(6 + pontuacao / 800);
       
    
@@ -150,7 +152,7 @@ function gerarNuvens() {
   //escreva o código aqui para gerar as nuvens 
   if (frameCount % 60 === 0) {
     nuvem = createSprite(600,100,40,10);
-    nuvem.y = Math.round(random(10,60));
+    nuvem.y = Math.round(random(10,windowHeight/3));
     nuvem.addImage(imagemdanuvem);
     nuvem.scale = 0.5;
     nuvem.velocityX = -3;
