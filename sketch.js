@@ -114,7 +114,7 @@ trex.velocityY = trex.velocityY + 0.8
 
 function gerarObstaculos(){
  if (frameCount % 60 === 0){
-   var obstaculo = createSprite(600,windowHeight/2.28,10,40);
+   var obstaculo = createSprite(600,windowHeight/2,10,40);
   obstaculo.velocityX = -(6 + pontuacao / 800);
       
    
