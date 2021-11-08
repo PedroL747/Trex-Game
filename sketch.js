@@ -70,7 +70,7 @@ function draw() {
 
 if(estadoJogo === JOGAR){
     solo.velocityX = -(4 + pontuacao / 800);
-    pontuacao = pontuacao + Math.round(frameCount/100)
+    pontuacao = pontuacao + antibug
   if(pontuacao % 500 === 0 && pontuacao > 0){
     chekipoitesom.play()
   }
@@ -176,4 +176,5 @@ function desiste(){
   que_ruim.visible = false
   trex.changeAnimation("running", trex_correndo);
   pontuacao = 0
+  antibug = 0
 }
