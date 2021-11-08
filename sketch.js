@@ -64,6 +64,8 @@ function draw() {
   background(180);
   antibug = antibug + 0.5
   text("Pontuação: "+ pontuacao, 500,50);
+  console.log(grupodeobstaculos.y)
+  console.log(soloinvisivel.y)
   
 
 if(estadoJogo === JOGAR){
