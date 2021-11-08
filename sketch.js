@@ -63,7 +63,6 @@ function setup() {
 function draw() {
   background(180);
   antibug = antibug + 0.5
-  console.log(antibug)
   text("Pontuação: "+ pontuacao, 500,50);
   
 
