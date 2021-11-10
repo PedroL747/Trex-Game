@@ -71,7 +71,7 @@ function draw() {
 if(estadoJogo === JOGAR){
     solo.velocityX = -(4 + pontuacao / 800);
     pontuacao = pontuacao + antibug
-  if(pontuacao % 500 === 0 && pontuacao > 0){
+  if(pontuacao % 10000 === 0 && pontuacao > 0){
     chekipoitesom.play()
   }
   if((touches.length>0||keyDown("space"))&& trex.y >= windowHeight/2.4) {
@@ -115,8 +115,8 @@ trex.velocityY = trex.velocityY + 0.8
 
 function gerarObstaculos(){
  if (frameCount % 60 === 0){
-   var obstaculo = createSprite(600,windowHeight/2,10,40);
-  obstaculo.velocityX = -(6 + pontuacao / 800);
+   var obstaculo = createSprite(windowWidth,windowHeight/2.5,10,40);
+  obstaculo.velocityX = -(6 + pontuacao / 10000);
       
    console.log("obstaculo" + obstaculo.y)
     //gerar obstáculos aleatórios
