@@ -37,7 +37,7 @@ function setup() {
   trex.addAnimation("collided" , trex_colidiu)
   trex.scale = 0.5;
   
-  solo = createSprite(200,windowHeight/2.1,400,20);
+  solo = createSprite(200,windowHeight/2,400,20);
   solo.addImage("ground",imagemdosolo);
   solo.x = solo.width /2;
   solo.velocityX = -4;
@@ -74,7 +74,7 @@ if(estadoJogo === JOGAR){
   if(pontuacao % 500 === 0 && pontuacao > 0){
     chekipoitesom.play()
   }
-  if((touches.lenght>0||keyDown("space"))&& trex.y >= windowHeight/2.4) {
+  if((touches.length>0||keyDown("space"))&& trex.y >= windowHeight/2.4) {
     trex.velocityY = -15;
     sompula.play()
       touches =  []
