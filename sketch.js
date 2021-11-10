@@ -62,7 +62,7 @@ function setup() {
 
 function draw() {
   background(180);
-  antibug = antibug + 0.5
+  antibug = antibug + 1
   text("Pontuação: "+ pontuacao, 500,50);
   
   console.log(soloinvisivel.y)
@@ -99,7 +99,7 @@ trex.velocityY = trex.velocityY + 0.8
     grupodeobstaculos.setLifetimeEach(0)
     que_ruim.visible = true
     gamiouver.visible = true
-  if(mousePressedOver(que_ruim)){
+  if((touches.length>0||mousePressedOver(que_ruim)){
       desiste()
   }
 }
